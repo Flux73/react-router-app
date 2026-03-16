@@ -1,6 +1,6 @@
-# Dashboard Implementation Notes
+# Dashboard Implementation
 
-## Task 2: Optimistic UI
+## Task 2:
 
 Each inventory row has its own `useFetcher({ key: claim-${item.id} })` instance so concurrent claims on different rows are fully independent.
 
@@ -21,6 +21,6 @@ export function shouldRevalidate({ formMethod }) {
 }
 ```
 
-## Task 3: Retry Logic
+## Task 3:
 
 A route-level `ErrorBoundary` is exported from `dashboard.tsx`. It renders the full page shell with an error banner so the layout stays intact on failure. The retry button uses `useRevalidator` to re-run the loader without a full page refresh, triggering the `<Suspense>` fallback spinner while data reloads.
