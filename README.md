@@ -11,7 +11,7 @@ const currentStock = fetcher.data?.stock ?? item.stock;
 const stockVal = fetcher.state !== "idle" ? currentStock - 1 : currentStock;
 ```
 
-Double submission is prevented by swapping the button for a loading state while `fetcher.state !== "idle"`. Rollback is automatic — if the action throws, `fetcher.state` returns to `"idle"` and the UI reverts to the last known stock value.
+Double submission is prevented by swapping the button for a loading state while `fetcher.state !== "idle"`. Rollback is automatic if the action throws, `fetcher.state` returns to `"idle"` and the UI reverts to the last known stock value.
 
 `shouldRevalidate` is set to skip revalidation after POST requests to prevent concurrent fetchers from being blocked during loader revalidation:
 
